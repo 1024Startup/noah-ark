@@ -31,12 +31,18 @@ func getMongoCollection() (*mongodb.MongoDBCollection, error) {
 	return collection, nil
 }
 
-func (apps *Apps) GetList(page, category int) ([]bson.M, error) {
+func (apps *Apps) GetList(page, category string) ([]bson.M, error) {
 	collection, err := getMongoCollection()
 
 	if err == nil {
 		var result []bson.M
-		err := collection.Find(nil).All(&result)
+		var query bson.M = nil
+
+		if category != "0" {
+			query = bson.M{"category_id": category}
+		}
+
+		err := collection.Find(query).All(&result)
 		if err == nil {
 			return result, err
 		}

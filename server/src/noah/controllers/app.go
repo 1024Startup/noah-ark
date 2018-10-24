@@ -24,8 +24,13 @@ type appReturn struct {
 }
 
 func (app *AppController) GetList() {
-	page, _ := app.GetInt("page")
-	category, _ := app.GetInt("category")
+	page := app.GetString("page")
+	category := app.GetString("category")
+
+	app.Ctx.Output.Header("Access-Control-Allow-Origin", "*")
+	app.Ctx.Output.Header("Access-Control-Allow-Methods", "POST,GET,OPTIONS,DELETE")
+	app.Ctx.Output.Header("Access-Control-Allow-Headers", "x-requested-with,content-type")
+	app.Ctx.Output.Header("Access-Control-Allow-Credentials", "true")
 
 	var appModel models.Apps
 
@@ -34,7 +39,7 @@ func (app *AppController) GetList() {
 		panic(err.Error())
 		app.Data["json"] = bson.M{"ret": -1}
 	} else {
-		app.Data["json"] = bson.M{"ret": 0, "rowset": result}
+		app.Data["json"] = bson.M{"ret": 0, "data": bson.M{"rowset": result}}
 	}
 	app.ServeJSON()
 }
