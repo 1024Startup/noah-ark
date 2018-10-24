@@ -4,10 +4,10 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type MainController struct {
+type CategoryController struct {
 	beego.Controller
 }
 
-func (this *MainController) Get() {
+func (this *CategoryController) Get() {
 	this.Ctx.WriteString("You can not see me!")
 }
