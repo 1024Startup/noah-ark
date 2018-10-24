@@ -7,3 +7,6 @@ app/www/cache
 .DS_Store
 public/admin/uploads/
 .idea
+server/bin
+server/pkg
+server/src/noah/noah
