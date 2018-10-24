@@ -1,0 +1,9 @@
+app/admin/cache
+app/api/cache
+app/biz/cache
+app/wmsapi/cache
+app/www/cache
+.git
+.DS_Store
+public/admin/uploads/
+.idea
