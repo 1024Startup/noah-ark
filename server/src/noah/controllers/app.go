@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/astaxie/beego"
+	"gopkg.in/mgo.v2/bson"
 	"noah/models"
 )
 
@@ -20,7 +20,7 @@ func (app *AppController) Post() {
 
 type appReturn struct {
 	ret    int
-	rowset []models.Apps
+	rowset []bson.M
 }
 
 func (app *AppController) GetList() {
@@ -31,11 +31,10 @@ func (app *AppController) GetList() {
 
 	result, err := appModel.GetList(page, category)
 	if err != nil {
-		print(err)
-		app.Data["json"] = appReturn{-1, nil}
+		panic(err.Error())
+		app.Data["json"] = bson.M{"ret": -1}
 	} else {
-		app.Data["json"] = appReturn{0, result}
+		app.Data["json"] = bson.M{"ret": 0, "rowset": result}
 	}
-	fmt.Print(result)
 	app.ServeJSON()
 }

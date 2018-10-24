@@ -1,7 +1,7 @@
 package models
 
 import (
-	"fmt"
+	"gopkg.in/mgo.v2/bson"
 	"influx.io/influxbase"
 	"influx.io/mongodb"
 )
@@ -20,19 +20,24 @@ type AppButton struct {
 	Url      string `json:"url"`
 }
 
-func (apps *Apps) GetList(page, category int) ([]Apps, error) {
+func getMongoCollection() (*mongodb.MongoDBCollection, error) {
 	mongo := mongodb.GetMongoDBInstance(influxbase.DBConfig{Host: "192.168.10.10:27017"})
 
 	collection, err := mongo.GetCollection("noah", "apps")
 
+	if err != nil {
+		return nil, err
+	}
+	return collection, nil
+}
+
+func (apps *Apps) GetList(page, category int) ([]bson.M, error) {
+	collection, err := getMongoCollection()
+
 	if err == nil {
-		var result []Apps
+		var result []bson.M
 		err := collection.Find(nil).All(&result)
 		if err == nil {
-			for _, v := range result {
-				fmt.Print(v)
-			}
-
 			return result, err
 		}
 	}
@@ -40,6 +45,21 @@ func (apps *Apps) GetList(page, category int) ([]Apps, error) {
 	return nil, err
 }
 
-func (apps *Apps) Add(title, background, description, tag string, buttons []AppButton) {
+func (apps *Apps) Add(title, background, description, tag string, buttons []AppButton) bool {
+	collection, err := getMongoCollection()
 
+	if err == nil {
+		err := collection.Insert(Apps{
+			tag:         tag,
+			title:       title,
+			background:  background,
+			description: description,
+			buttons:     buttons,
+		})
+		if err == nil {
+			return true
+		}
+	}
+
+	return false
 }
