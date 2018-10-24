@@ -9,5 +9,5 @@ type CategoryController struct {
 }
 
 func (this *CategoryController) Get() {
-	this.Ctx.WriteString("You can not see me!")
+	this.Ctx.WriteString("Category!")
 }

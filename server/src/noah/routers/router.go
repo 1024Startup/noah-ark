@@ -6,8 +6,15 @@ import (
 )
 
 func init() {
-	beego.Router("/", &controllers.MainController{})
-	beego.Router("/api/apps/list", &controllers.AppListController{})
-	beego.Router("/api/categories", &controllers.CategoryController{})
-	beego.Router("/api/categories/summary", &controllers.CategorySummaryController{})
+	ns := beego.NewNamespace("/api",
+		beego.NSNamespace("/apps",
+			beego.NSRouter("/list", &controllers.AppListController{}),
+		),
+
+		beego.NSRouter("/categories", &controllers.CategoryController{}),
+		beego.NSNamespace("/categories",
+			beego.NSRouter("/summary", &controllers.CategorySummaryController{}),
+		),
+	)
+	beego.AddNamespace(ns)
 }

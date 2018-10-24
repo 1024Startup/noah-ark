@@ -9,5 +9,5 @@ type CategorySummaryController struct {
 }
 
 func (this *CategorySummaryController) Get() {
-	this.Ctx.WriteString("You can not see me!")
+	this.Ctx.WriteString("Category list")
 }
