@@ -4,6 +4,8 @@ import (
 	"github.com/astaxie/beego"
 	"gopkg.in/mgo.v2/bson"
 	"noah/models"
+	"log"
+	"encoding/json"
 )
 
 type AppController struct {
@@ -40,6 +42,27 @@ func (app *AppController) GetList() {
 		app.Data["json"] = bson.M{"ret": -1}
 	} else {
 		app.Data["json"] = bson.M{"ret": 0, "data": bson.M{"rowset": result}}
+	}
+	app.ServeJSON()
+}
+
+func (app *AppController) PostSave() {
+	appdata := models.AppsData{}
+	app.ParseForm(&appdata)
+	btons := app.Input().Get("buttons")
+
+
+
+	var buttons []models.AppButton
+	json.Unmarshal([]byte(btons), &buttons)
+	appdata.Buttons = buttons
+	log.Println("dddd::::V%,,,,v%",appdata,buttons)
+	appModel := models.Apps{}
+	err := appModel.Add(appdata)
+	if err {
+		app.Data["json"] = bson.M{"ret": -1}
+	} else {
+		app.Data["json"] = bson.M{"ret": 0}
 	}
 	app.ServeJSON()
 }
