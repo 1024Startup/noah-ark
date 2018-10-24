@@ -23,6 +23,10 @@
 
         <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
         <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+		<script type="text/javascript" src="//st.viewlayer.cn/js/mobmobs/handlebars.runtime.min.js"></script>
+		<!-- <script src="/js/vue.min.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script> -->
     </head>
 </head>
 
@@ -41,58 +45,19 @@
                     </a>
                 </div>
                 <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
-                <ul class="right">
+                <ul class="right" id="menu-list">
 
-                    <li class="hide-on-med-and-down">
+                    <!-- <li class="hide-on-med-and-down">
                         <a href="/" class="waves-effect waves-light">
 
                             <i class="fa fa-home"></i>
 
                             <span>首页</span>
                         </a>
-                    </li>
+                    </li> -->
 
-                    <li class="hide-on-med-and-down">
-                        <a href="/tags" class="waves-effect waves-light">
 
-                            <i class="fa fa-tags"></i>
 
-                            <span>标签</span>
-                        </a>
-                    </li>
-
-                    <li class="hide-on-med-and-down">
-                        <a href="/categories" class="waves-effect waves-light">
-
-                            <i class="fa fa-bookmark"></i>
-
-                            <span>分类</span>
-                        </a>
-                    </li>
-
-                    <li class="hide-on-med-and-down">
-                        <a href="/archives" class="waves-effect waves-light">
-
-                            <i class="fa fa-archive"></i>
-
-                            <span>归档</span>
-                        </a>
-                    </li>
-
-                    <li class="hide-on-med-and-down">
-                        <a href="/about" class="waves-effect waves-light">
-
-                            <i class="fa fa-user-circle-o"></i>
-
-                            <span>关于</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a id="toggleSearch" class="waves-effect waves-light">
-                            <i id="searchIcon" class="mdi-action-search"></i>
-                        </a>
-                    </li>
 
                 </ul>
 
@@ -110,63 +75,19 @@
                         </div>
                     </div>
 
-                    <ul class="menu-list mobile-menu-list">
+                    <ul class="menu-list mobile-menu-list" id="mobile-menu-list">
 
-                        <li>
+                        <!-- <li>
                             <a href="/" class="waves-effect waves-light">
 
                                 <i class="fa fa-fw fa-home"></i>
 
                                 首页
                             </a>
-                        </li>
-
-                        <li>
-                            <a href="/tags" class="waves-effect waves-light">
-
-                                <i class="fa fa-fw fa-tags"></i>
-
-                                标签
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/categories" class="waves-effect waves-light">
-
-                                <i class="fa fa-fw fa-bookmark"></i>
-
-                                分类
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/archives" class="waves-effect waves-light">
-
-                                <i class="fa fa-fw fa-archive"></i>
-
-                                归档
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/about" class="waves-effect waves-light">
-
-                                <i class="fa fa-fw fa-user-circle-o"></i>
-
-                                关于
-                            </a>
-                        </li>
+                        </li> -->
 
 
-                        <li>
-                            <div class="divider"></div>
-                        </li>
-                        <li>
-                            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light"
-                               target="_blank">
-                                <i class="fa fa-github-square fa-fw"></i>Fork Me
-                            </a>
-                        </li>
+
 
                     </ul>
 
@@ -297,336 +218,159 @@
 </div>-->
 
 <script>
-    // Dynamically switch banner pictures every day.
     $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
 
-<main class="content">
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
+<div class="" id="app-content">
 
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/10/22/2018/10/uml-ge-lei-guan-xi-jie-shao/">
-                        <div class="card-image">
-
-                            <img src="http://static.blinkfox.com/20181022-organ.jpg" class="responsive-img"
-                                 alt="UML各类关系介绍">
-
-                            <span class="card-title">Puzzle智能投放平台</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-22
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories//" class="post-category" target="_blank">
-                                    软件设计
-                                </a>
-                            </span>
-                        </div>
-                    </div>
+	<div class="content" id="content">
 
 
-                    <div class="card-action article-tags">
-
-                        <a href="/tags/Java/" target="_blank">
-                            <span class="chip bg-color">Java</span>
-                        </a>
-
-                        <a href="/tags/面向对象编程/" target="_blank">
-                            <span class="chip bg-color">面向对象编程</span>
-                        </a>
-
-                        <a href="/tags/UML/" target="_blank">
-                            <span class="chip bg-color">UML</span>
-                        </a>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/10/21/2018/10/mian-xiang-dui-xiang-bian-cheng-de-li-jie/">
-                        <div class="card-image">
-
-                            <img src="http://static.blinkfox.com/20181021-oop.jpg" class="responsive-img"
-                                 alt="面向对象编程的理解">
-
-                            <span class="card-title">面向对象编程的理解</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">面向过程和面向对象面向过程思想概述面向着具体的每一个步骤和过程，把每一个步骤和过程完成，然后由这些功能方法相互调用，完成需求。
-                            面向对象思想
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-21
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/软件设计/" class="post-category" target="_blank">
-                                    软件设计
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+	</div>
 
 
-                    <div class="card-action article-tags">
+	<!-- <div class="container paging">
+	    <div class="row">
+	        <div class="col s6 m4 l4">
 
-                        <a href="/tags/Java/" target="_blank">
-                            <span class="chip bg-color">Java</span>
-                        </a>
+	            <a class="left btn-floating btn-large disabled">
+	                <i class="fa fa-angle-left"></i>
+	            </a>
 
-                        <a href="/tags/面向对象编程/" target="_blank">
-                            <span class="chip bg-color">面向对象编程</span>
-                        </a>
+	        </div>
+	        <div class="page-info col m4 l4 hide-on-small-only">
+	            <div class="center-align b-text-gray">1 / 3</div>
+	        </div>
+	        <div class="col s6 m4 l4">
 
-                    </div>
+	            <a href="/page/2/"
+	               class="right btn-floating btn-large waves-effect waves-light bg-color">
+	                <i class="fa fa-angle-right"></i>
+	            </a>
 
-                </div>
-            </div>
-
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/10/20/2018/10/java-mian-xiang-dui-xiang-she-ji-zhi-jian-zao-zhe-mo-shi/">
-                        <div class="card-image">
-
-                            <img src="http://static.blinkfox.com/20181020-builder.jpg" class="responsive-img"
-                                 alt="Java面向对象设计之建造者模式">
-
-                            <span class="card-title">Java面向对象设计之建造者模式</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">一、模式动机无论是在现实世界中还是在软件系统中，都存在一些复杂的对象，它们拥有多个组成部分，如汽车，它包括车轮、方向盘、发动机等各种部件。而
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/软件设计/" class="post-category" target="_blank">
-                                    软件设计
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+	        </div>
+	    </div>
+	</div> -->
 
 
-                    <div class="card-action article-tags">
+	<div class="page-footer bg-color">
+	    <div class="container row center-align">
 
-                        <a href="/tags/Java/" target="_blank">
-                            <span class="chip bg-color">Java</span>
-                        </a>
+	    </div>
+	</div>
 
-                        <a href="/tags/设计模式/" target="_blank">
-                            <span class="chip bg-color">设计模式</span>
-                        </a>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/10/18/2018/10/java-mian-xiang-dui-xiang-she-ji-zhi-wai-guan-mo-shi/">
-                        <div class="card-image">
-
-                            <img src="http://static.blinkfox.com/20181018_facade.jpg" class="responsive-img"
-                                 alt="Java面向对象设计之外观模式">
-
-                            <span class="card-title">Java面向对象设计之外观模式</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">一、模式定义
-                            外观模式(Facade Pattern)：外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-18
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/软件设计/" class="post-category" target="_blank">
-                                    软件设计
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+	<div class="progress-bar"></div>
 
 
-                    <div class="card-action article-tags">
+	<div id="searchModal" class="modal">
+	    <div class="modal-content">
+	        <div class="search-header">
+	            <span class="title">搜索</span>
+	            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+	                   class="search-input" autofocus="">
+	        </div>
+	        <div id="searchResult"></div>
+	    </div>
+	</div>
 
-                        <a href="/tags/Java/" target="_blank">
-                            <span class="chip bg-color">Java</span>
-                        </a>
+	<script src="/js/search.js"></script>
+	<script type="text/javascript">
+	    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+	</script>
 
-                        <a href="/tags/设计模式/" target="_blank">
-                            <span class="chip bg-color">设计模式</span>
-                        </a>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/10/17/2018/10/java-mian-xiang-dui-xiang-she-ji-zhi-zhong-jie-zhe-mo-shi/">
-                        <div class="card-image">
-
-
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Java面向对象设计之中介者模式">
-
-                            <span class="card-title">Java面向对象设计之中介者模式</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary">一、模式动机在用户与用户直接聊天的设计方案中，用户对象之间存在很强的关联性，将导致系统出现如下问题：
-
-                            系统结构复杂：对象之间存在大量的相互
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-17
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/软件设计/" class="post-category" target="_blank">
-                                    软件设计
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-
-                    <div class="card-action article-tags">
-
-                        <a href="/tags/Java/" target="_blank">
-                            <span class="chip bg-color">Java</span>
-                        </a>
-
-                        <a href="/tags/设计模式/" target="_blank">
-                            <span class="chip bg-color">设计模式</span>
-                        </a>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </article>
-
-</main>
-
-
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-
-            <a class="left btn-floating btn-large disabled">
-                <i class="fa fa-angle-left"></i>
-            </a>
-
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 3</div>
-        </div>
-        <div class="col s6 m4 l4">
-
-            <a href="/page/2/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fa fa-angle-right"></i>
-            </a>
-
-        </div>
-    </div>
+	<div id="backTop" class="top-scroll">
+	    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+	        <i class="fa fa-angle-up"></i>
+	    </a>
+	</div>
 </div>
 
+<script id="list-template" type="text/x-handlebars-template">
 
-<footer class="page-footer bg-color">
-    <div class="container row center-align">
+	<article id="articles" class="container articles">
 
-        <!--<div class="col s12 m4 l4 social-link"><a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-            <i class="fa fa-github"></i>
-        </a>
-            <a href="mailto:chenjiayin1990@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-                <i class="fa fa-envelope-open"></i>
-            </a>
-            <a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-                <i class="fa fa-qq"></i>
-            </a>
+		<div class="row article-row">
+				{{#each rowset}}
+			<div class="article col s12 m6 l3" data-aos="zoom-in">
+				<div class="card">
+					<a href="/2018/10/18/2018/10/java-mian-xiang-dui-xiang-she-ji-zhi-wai-guan-mo-shi/">
+						<div class="card-image">
 
-            <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-                <i class="fa fa-rss"></i>
-            </a>
-        </div>-->
-    </div>
-</footer>
+							<img src="{{background}}" class="responsive-img"
+								 alt="">
 
-<div class="progress-bar"></div>
+							<span class="card-title">{{title}}</span>
+						</div>
+					</a>
+
+					<div class="card-content article-content">
+						<div class="summary">
+							{{description}}
+						</div>
+
+					</div>
 
 
-<!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title">搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input" autofocus="">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
+					<div class="card-action article-tags">
+						{{#each buttons}}
+						<a href="{{utl}}" target="_blank">
+							<span class="chip bg-color">{{name}}</span>
+						</a>
+						{{/each}}
+					</div>
 
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+				</div>
+			</div>
+		{{/each}}
+		</div>
+
+	</article>
+
 </script>
-<!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fa fa-angle-up"></i>
-    </a>
-</div>
+<script id="titlelist-template" type="text/x-handlebars-template">
 
+		{{#each rowset}}
+			<li class="hide-on-med-and-down">
+				<a href="{{url}}" class="waves-effect waves-light">
+
+					<i class="fa {{icon}}"></i>
+
+					<span>{{name}}</span>
+				</a>
+			</li>
+		{{/each}}
+		<li>
+			<a id="toggleSearch" class="waves-effect waves-light">
+				<i id="searchIcon" class="mdi-action-search"></i>
+			</a>
+		</li>
+
+</script>
+
+<script id="mobile-titlelist--template" type="text/x-handlebars-template">
+
+		{{#each rowset}}
+			<li>
+				<a href="{{url}}" class="waves-effect waves-light">
+
+					<i class="fa fa-fw {{icon}}"></i>
+
+					{{name}}
+				</a>
+			</li>
+		{{/each}}
+
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light"
+               target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+
+</script>
 
 <script src="/libs/materialize/js/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
@@ -634,5 +378,96 @@
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
 <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
 <script src="/js/matery.js"></script>
+<script type="text/javascript">
+$(function() {
+	var partners = {
+		init: function() {
+			var self = this;
+			self.bindEvent();
+			self.getListData();
+			self.getTitleList()
+		},
+		getListData: function() {
+			var self = this;
+			let data = {
+				page:1,
+				category:0
+			}
+			$.ajax({
+				url: '/apps/list',
+				data: data,
+				type: "POST",
+				dataType: "JSON",
+				success: function(result) {
+					if (result['ret'] == 0) {
+						let result = {
+			    "ret": "0",
+			    "data": {
+			        "rowset": [{
+			            "id": 1,
+			            "background": "http://static.blinkfox.com/20181022-organ.jpg",
+			            "title": "Puzzle智能投放平台",
+			            "description": "puzzle智能广告投放平台，精准投放，助力企业实现营销目标",
+			            "buttons": [{
+			                "name": "管理员端",
+			        	    "type": "url",
+			            	"url": "http://admin.mobmobs.com/sysmanager"
+			            }]
+			        }]
+			    }
+			}
+						var source = $("#list-template").html();
+						var template = Handlebars.compile(source);
+						$('#content').html(template(result.data));
+
+					} else {
+
+					}
+				}
+			}).fail(function() {
+
+			});
+
+		},
+		bindEvent: function() {
+			var self = this;
+
+		},
+		getTitleList: function() {
+			let result = {
+			    "ret": "0",
+			    "data": {
+			        "rowset": [{
+			            "id": 1,
+			            "name": "首页",
+			            "icon": "fa-home",
+			            "url": "/"
+			        },{
+			            "id": 2,
+			            "name": "公司系统",
+			            "icon": "fa-tags",
+			            "url": "/category/3"
+			        },{
+			            "id": 3,
+			            "name": "研发工具",
+			            "icon": "fa-wrench",
+			            "url": "/category/4"
+			        }]
+			    }
+			}
+
+			var source = $("#titlelist-template").html();
+			var mobile_source =  $("#mobile-titlelist-template").html();
+			var template = Handlebars.compile(source);
+			var mobile_template = Handlebars.compile(source);
+			$('#menu-list').html(template(result.data));
+			$('#mobile-menu-list').html(mobile_template(result.data));
+
+
+		}
+	}
+	partners.init();
+});
+</script>
 </body>
 </html>
