@@ -1,1 +1,0 @@
-docker run -it -v /Users/carpcai/code/influx/uranus_labels_services/server_go/src:/go/src -w /go/src/ -p 9090:9090  golang:latest bash
