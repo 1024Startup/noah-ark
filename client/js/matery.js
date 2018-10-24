@@ -104,6 +104,10 @@ $(function () {
     $(window).scroll(function () {
         /* 回到顶部按钮根据滚动条的位置的显示和隐藏.*/
         let scroll = $(window).scrollTop();
+        /*if (scroll > 50) {
+            $nav.removeClass('nav-transparent');
+            $backTop.slideDown(300);
+        }*/
         /*if (scroll < 100) {
             $nav.addClass('nav-transparent');
             $backTop.slideUp(300);
