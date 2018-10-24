@@ -11,6 +11,7 @@ func init() {
 		context.Redirect(302, "/static/")
 	})
 	beego.Router("/api/apps/list", &controllers.AppController{}, "get:GetList")
+	beego.Router("/api/apps/add", &controllers.AppController{}, "post:PostSave")
 	beego.Router("/api/categories", &controllers.CategoryController{})
 	beego.Router("/api/categories/summary", &controllers.CategoryController{}, "get:GetSummary")
 }

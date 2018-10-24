@@ -7,17 +7,22 @@ import (
 )
 
 type Apps struct {
-	id          string
-	tag         string
-	title       string
-	background  string
-	description string
-	buttons     []AppButton
+	//id          string
+}
+type AppsData struct {
+	//id          string
+	Tag         string `form:"tag",json:"tag"`
+	Title       string `form:"title",json:"title"`
+	Background  string `form:"background",json:"background"`
+	Category_id  string `form:"category",json:"category_id"`
+	Type 		string `form:"type",json:"type"`
+	Description string `form:"description",json:"description"`
+	Buttons     []AppButton `form:"buttons",json:"buttons"`
 }
 type AppButton struct {
-	Name     string `json:"name"`
-	TypeName string `json:"type"`
-	Url      string `json:"url"`
+	Name     string `form:"name",json:"name"`
+	Type string `form:"type",json:"type"`
+	Url      string `form:"url",json:"url"`
 }
 
 func getMongoCollection() (*mongodb.MongoDBCollection, error) {
@@ -51,20 +56,18 @@ func (apps *Apps) GetList(page, category string) ([]bson.M, error) {
 	return nil, err
 }
 
-func (apps *Apps) Add(title, background, description, tag string, buttons []AppButton) bool {
+func (apps *Apps) Add(data AppsData) bool {
 	collection, err := getMongoCollection()
 
 	if err == nil {
-		err := collection.Insert(Apps{
-			tag:         tag,
-			title:       title,
-			background:  background,
-			description: description,
-			buttons:     buttons,
-		})
-		if err == nil {
-			return true
-		}
+		//err := collection.Insert()
+		m := bson.M{"title":data.Title}//event为主键
+	    _,err := collection.Upsert(m,data)
+
+		if influxbase.HasError(err){
+
+	        return false
+	    }
 	}
 
 	return false
