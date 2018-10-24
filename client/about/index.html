@@ -29,7 +29,7 @@
 <body>
 
 <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color">
+    <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="container">
             <div class="nav-wrapper">
                 <div class="brand-logo">
@@ -44,8 +44,8 @@
                         <a class='dropdown-button waves-effect waves-light' constrainwidth="true" gutter="0" href='#'
                            data-activates='dropdown1'><i class="fa fa-gamepad"></i> 极客大赛</a>
                         <ul id='dropdown1' class='dropdown-content' style="padding-left:0;margin-left:0;width: 300px">
-                            <li>
-                                <a style="margin-left:0;" data-id="3" class="waves-effect waves-light btn-tab">第一届</a></li>
+                            <li style="margin-left:0;" data-id="{{id}}" class="waves-effect waves-light btn-tab">
+                                <a>第一届</a></li>
                         </ul>
                     </li>
                     <li>
@@ -136,14 +136,125 @@
     }
 </style>
 
+<div class="bg-cover  about-cover" style="background-image: url('/medias/cover.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+                <div class="brand">
+                    <div class="title center-align">
+                        诺亚方舟
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
 
-<div class="content" id="content">
-</div>
 
+<div class="content" id="content">
+    <div id="aboutme" class="container about-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
+
+                        <div class="statis">
+                            <span class="count"><a target="_blank">34</a></span>
+                            <span class="name">应用</span>
+                        </div>
+                        <div class="statis">
+                            <span class="count"><a target="_blank">6</a></span>
+                            <span class="name">分类</span>
+                        </div>
+                        <div class="statis">
+                            <span class="count"><a target="_blank">16</a></span>
+                            <span class="name">标签</span>
+                        </div>
+
+                    </div>
+                    <div class="col s12 m12 l4">
+                        <div class="profile center-align">
+                            <div class="avatar">
+                                <img src="/medias/avatar.jpg" alt="blinkfox"
+                                     class="circle responsive-img avatar-img">
+                            </div>
+                            <div class="author">
+                                <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
+
+                                    <div class="statis">
+                                        <span class="count"><a target="_blank">34</a></span>
+                                        <span class="name">文章</span>
+                                    </div>
+
+
+                                    <div class="statis">
+                                        <span class="count"><a target="_blank">6</a></span>
+                                        <span class="name">分类</span>
+                                    </div>
+
+
+                                    <div class="statis">
+                                        <span class="count"><a target="_blank">16</a></span>
+                                        <span class="name">标签</span>
+                                    </div>
+
+                                </div>
+                                <div class="title">关于我们</div>
+                                <div class="career">深圳市前海汇流有限公司</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="introduction center-align" data-aos="fade-up">
+
+                </div>
+
+                <style type="text/css">
+                    #posts-chart,
+                    #categories-chart,
+                    #tags-chart {
+                        width: 100%;
+                        height: 300px;
+                        margin: 0.5rem auto;
+                        padding: 0.5rem;
+                    }
+                </style>
+
+                <div id="myGallery" class="my-gallery">
+                    <div class="title center-align" data-aos="zoom-in-up">第一届极客大赛</div>
+                    <div class="row">
+                        <div class="photo col s12 m6 l4" data-aos="fade-up">
+                            <div class="img-item" data-src="/medias/featureimages/0.jpg">
+                                <img src="/medias/featureimages/0.jpg" class="responsive-img">
+                            </div>
+                        </div>
+
+                        <div class="photo col s12 m6 l4" data-aos="fade-up">
+                            <div class="img-item" data-src="/medias/featureimages/1.jpg">
+                                <img src="/medias/featureimages/1.jpg" class="responsive-img">
+                            </div>
+                        </div>
+
+                        <div class="photo col s12 m6 l4" data-aos="fade-up">
+                            <div class="img-item" data-src="/medias/featureimages/2.jpg">
+                                <img src="/medias/featureimages/2.jpg" class="responsive-img">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
@@ -157,21 +268,13 @@
     </div>
 </div>
 
-<!-- 二维码遮罩-->
-<div id="qrcodeModal" class="modal" style="width: 500px">
-    <div class="modal-content center-align">
-        <h4 style="padding-bottom: 20px">打开手机扫一扫扫描二维码</h4>
-        <img src="" id="qrcode-img"/>
-    </div>
-    <div class="modal-footer">
-        <a class=" modal-action modal-close waves-effect waves-green btn-flat">关闭</a>
-    </div>
-</div>
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">
-        <div class="col s12 m4 l4 social-link">
+        <div class="col s12 m8 l8 copy-right">
+            <a>@Jacky @Kenneth @CarpCai</a>
         </div>
+
     </div>
 </footer>
 <div class="progress-bar"></div>
@@ -196,7 +299,7 @@
             {{#each rowset}}
             <div class="article col s12 m6 l3" data-aos="zoom-in">
                 <div class="card">
-                    <a href="{{url}}">
+                    <a href="/">
                         <div class="card-image">
                             <img src="{{background}}" class="responsive-img" alt="">
                             <span class="card-title">{{title}}</span>
@@ -233,7 +336,7 @@
 <script id="titlelist-template" type="text/x-handlebars-template">
     {{#each rowset}}
     <li class="hide-on-med-and-down">
-        <a data-id="{{id}}" class="waves-effect waves-light btn-tab">
+        <a href="/" class="waves-effect waves-light">
             <i class="fa {{icon}}"></i>
             <span>{{name}}</span>
         </a>
@@ -267,49 +370,24 @@
             init: function () {
                 var self = this;
                 self.bindEvent();
-                self.getListData();
                 self.getTitleList();
-            },
-            getListData: function (category_id = 0) {
-                var self = this;
-                let data = {
-                    page: 1,
-                    category: 0
-                };
-                $.ajax({
-                    url: 'http://192.168.50.244:8080/api/apps/list?category=' + category_id,
-                    // data: data,
-                    type: "GET",
-                    dataType: "JSON",
-                    success: function (result) {
-                        if (result['ret'] == 0) {
-                            var source = $("#list-template").html();
-                            var template = Handlebars.compile(source);
-                            $('#content').html(template(result.data));
-                        }
-                    }
-                }).fail(function () {
-
-                });
-
             },
             bindEvent: function () {
                 var self = this;
 
-                //删除
-                $('body').on('click', '.qrcode-modal', function () {
-                    var $ele = $(this);
-                    var url = $ele.attr('data-url');
-                    $('#qrcode-img').attr('src', url);
-                    $('#qrcodeModal').openModal();
+                $(window).scroll(function () {
+                    /* 回到顶部按钮根据滚动条的位置的显示和隐藏.*/
+                    let $nav = $('#headNav');
+                    let $backTop = $('.top-scroll');
+                    let scroll = $(window).scrollTop();
+                    if (scroll < 100) {
+                        $nav.addClass('nav-transparent');
+                        $backTop.slideUp(300);
+                    } else {
+                        $nav.removeClass('nav-transparent');
+                        $backTop.slideDown(300);
+                    }
                 });
-
-                $('body').on('click', '.btn-tab', function () {
-                    var $ele = $(this);
-                    var category_id = $ele.attr('data-id');
-                    self.getListData(category_id)
-                });
-
             },
             getTitleList: function () {
                 $.ajax({
