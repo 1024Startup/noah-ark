@@ -1,6 +1,6 @@
 #!/bin/bash
 
-path=/Users/kenneth/workspace/noah-ark/server
+path=$(cd `dirname $0`; pwd)
 
 case $1 in
     run)
