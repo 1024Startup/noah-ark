@@ -9,10 +9,10 @@ import
     "encoding/json"
 )
 type CategoryDB struct{
-    id string
-    name string
-    icon string
-    url string
+    Id string `json:"id"`
+    Name string `json:"name"`
+    Icon string `json:"icon"`
+    Url string `json:"url"`
 }
 
 type Category struct{
@@ -51,21 +51,22 @@ func (p* Category) Init(dbc influxbase.DBConfig) bool{
     return true
 }
 
-func(p* Category) GetCategory() ([]bson.M,error){
+func(p* Category) GetCategory() (string,error){
 
 
-    var result []bson.M
+    var result []CategoryDB//bson.M
     conditions := bson.M{}//bson.M{"createdtime":bson.M{"$gt":time},
     //"lastexcutetime":bson.M{"$lt":curtime},//下次执行时间 小于当前时间
     //"excutesstatus":bson.M{"$in":[]base.EXCUTE_STATUS{base.NEW_STATUS,base.ERROR_STATUS}}}
     //"
 
     err := p.coll.Find(conditions).Sort("_id").All(&result)
-
+    jsonstring,_ := json.Marshal(result)
     if influxbase.HasError(err) {
-        return nil,err
+        return "error",err
     }
-    return result,nil
+    log.Println("jsonstring:::",string(jsonstring[:]))
+    return string(jsonstring[:]),nil
 }
 
 //主要用于Json解释

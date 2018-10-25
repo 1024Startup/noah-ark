@@ -11,18 +11,18 @@ type Apps struct {
 }
 type AppsData struct {
 	//id          string
-	Tag         string `form:"tag",json:"tag"`
-	Title       string `form:"title",json:"title"`
-	Background  string `form:"background",json:"background"`
-	Category_id  string `form:"category",json:"category_id"`
-	Type 		string `form:"type",json:"type"`
-	Description string `form:"description",json:"description"`
-	Buttons     []AppButton `form:"buttons",json:"buttons"`
+	Tag         string `form:"tag" json:"tag" bson:"tag"`
+	Title       string `form:"title" json:"title"`
+	Background  string `form:"background" json:"background"`
+	Category_id  string `form:"category" json:"category_id"`
+	Type 		string `form:"type" json:"type"`
+	Description string `form:"description" json:"description"`
+	Buttons     []AppButton `form:"buttons" json:"buttons"`
 }
 type AppButton struct {
-	Name     string `form:"name",json:"name"`
-	Type string `form:"type",json:"type"`
-	Url      string `form:"url",json:"url"`
+	Name     string `form:"name" json:"name"`
+	Type string `form:"type" json:"type"`
+	Url      string `form:"url" json:"url"`
 }
 
 func getMongoCollection() (*mongodb.MongoDBCollection, error) {
